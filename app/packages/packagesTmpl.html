@@ -1,20 +1,24 @@
 <section class="packages-main">
-  <section class="package-card">
+  <section class="package-card" ng-repeat="package in packages">
 
     <h6>
       <!--The city name goes here-->
+      {{package.city}}
     </h6>
     <h1>
       <!--The country name goes here-->
+      {{package.country}}
     </h1>
     <p>
       <!--The description goes here-->
+      {{package.desc}}
     </p>
     <h3>$
       <!--The package price goes here-->
+      {{package.price}}
     </h3>
 
     <!--This button needs a ui-sref that points to booked-->
-    <button ui-sref="booked">Book Now</button>
+    <button ui-sref="booked({ id:'{{ package.id }}'  })">Book Now</button>
   </section>
 </section>

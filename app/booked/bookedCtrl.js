@@ -1,17 +1,17 @@
 angular
   .module("devmtnTravel")
   .controller("bookedCtrl", function($scope, $stateParams, mainSrvc) {
-    mainSrvc
-      .getPackageInfo()
-      .then(response => ($scope.allPackages = response.data));
+    mainSrvc.getPackageInfo().then(response => {
+      $scope.allPackages = response.data;
 
-    if ($stateParams.id) {
-      $scope.packageIndex = $scope.allPackages.findIndex(package => {
-        return package.id === parseInt($state.params.id);
-      });
-    }
+      if ($stateParams.id) {
+        $scope.packageIndex = $scope.allPackages.findIndex(function(package) {
+          return package.id === parseInt($stateParams.id);
+        });
 
-    if ($scope.packageIndex !== -1) {
-      $scope.package = $scope.allPackages[$scope.packageIndex];
-    }
+        if ($scope.packageIndex !== -1) {
+          $scope.package = $scope.allPackages[$scope.packageIndex];
+        }
+      }
+    });
   });
